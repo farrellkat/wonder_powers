@@ -4,6 +4,27 @@ let mindreading = document.querySelector("#mindreading")
 let xray = document.querySelector("#xray")
 let powerList = document.querySelectorAll("section")
 
+//One function to rule them all
+oneHandlerFunction = document.querySelector("body").addEventListener("click", function (event) {
+    let splitEvent = event.target.id.split("-")
+    let newSplit = splitEvent[1]
+    if (newSplit === "all") {
+        for (let i = 0; i < powerList.length; i++) {
+            powerList[i].classList.remove("disabled")
+            powerList[i].classList.add("enabled")
+        }
+    }
+    if (splitEvent[0] === "deactivate") {
+        for (let i = 0; i < powerList.length; i++) {
+            powerList[i].classList.remove("enabled")
+            powerList[i].classList.add("disabled")
+        }
+    }
+    let placement = document.querySelector(`#${newSplit}`)
+    placement.classList.toggle("enabled")
+
+})  
+
 // //button functions
 // flightHandlerFunction = document.querySelector("#activate-flight").addEventListener("click", function () {
 //     flight.classList.toggle("enabled")
@@ -28,26 +49,6 @@ let powerList = document.querySelectorAll("section")
 // })
 
 
-//One function to rule them all
-oneHandlerFunction = document.querySelector("body").addEventListener("click", function (event) {
-    let splitEvent = event.target.id.split("-")
-    let newSplit = splitEvent[1]
-    if (newSplit === "all") {
-        for (let i = 0; i < powerList.length; i++) {
-            powerList[i].classList.remove("disabled")
-            powerList[i].classList.add("enabled")
-        }
-    }
-    if (splitEvent[0] === "deactivate") {
-        for (let i = 0; i < powerList.length; i++) {
-            powerList[i].classList.remove("enabled")
-            powerList[i].classList.add("disabled")
-        }
-    }
-    let placement = document.querySelector(`#${newSplit}`)
-    placement.classList.toggle("enabled")
-
-})  
 
 
 
